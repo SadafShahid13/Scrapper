@@ -5,10 +5,8 @@ import os
 from datetime import date
 
 class Logger:
-
     currentDate = date.today().strftime("%d-%m-%Y")
 
-    
     #Create Logs Directory and Today's Folder
     directoryPath = os.path.dirname(os.path.abspath(__file__))
     logPath = directoryPath+'\Logs'
