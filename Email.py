@@ -35,8 +35,12 @@ class Email():
             if creds and creds.expired and creds.refresh_token:
                 creds.refresh(Request())
             else:
-                flow = InstalledAppFlow.from_client_secrets_file(
+                try:
+                    flow = InstalledAppFlow.from_client_secrets_file(
                     os.getenv('SECRET_JSON_PATH'), SCOPES)
+                except:
+                    logger.criticalLog("Gmail Credentials Missing")
+                    exit()
                 creds = flow.run_local_server(port=0)
 
             # Save the credentials for the next run

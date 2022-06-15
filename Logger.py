@@ -1,5 +1,4 @@
 # imports
-from genericpath import isdir
 import logging
 import os
 from datetime import date
