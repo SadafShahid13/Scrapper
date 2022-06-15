@@ -1,4 +1,3 @@
-# imports
 import logging
 import os
 from datetime import date
@@ -6,10 +5,15 @@ from datetime import date
 class Logger:
     currentDate = date.today().strftime("%d-%m-%Y")
 
-    #Create Logs Directory and Today's Folder
+    #Create Logs Directory and Current Date's Folder
     directoryPath = os.path.dirname(os.path.abspath(__file__))
     logPath = directoryPath+'\Logs'
+    outputPath = directoryPath+'\Outputs'
     try:
+        if (os.path.isdir(outputPath)):
+            pass
+        else:
+            os.mkdir(outputPath)
         if (os.path.isdir(logPath)):
             pass
         else:
@@ -19,10 +23,6 @@ class Logger:
         logging.error("OSError",exc_info=True)
     
     logging.basicConfig(level='INFO',filemode='a',filename='Logs/'+currentDate+'.txt',format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%H:%M:%S')
-
-    def getLogger(name):
-        logger = logging.getLogger(name)
-        return logger
 
     def infoLog(self, message):
         logging.info(message)

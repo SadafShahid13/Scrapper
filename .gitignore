@@ -44,3 +44,6 @@ venv.bak/
 
 #Logs
 Logs/
+
+#Outputs
+Outputs/
