@@ -34,20 +34,22 @@ def main():
     priceList = []
     linkList = []
     descList = []
-    
+    subText = "iPhone 12 Pro"
+
     while (ListCount > 0):
         scrapper.waitForNSeconds(5)
         nextButtonElement = scrapper.findElementByCSS_Selector(".s-pagination-item.s-pagination-next.s-pagination-button.s-pagination-separator")
         itemElement = scrapper.findElementsByCSS_Selector(".a-link-normal.s-underline-text.s-underline-link-text.s-link-style.a-text-normal")
         for a in itemElement:
-            if ("iPhone 12 Pro" in a.text):
+            if (subText in a.text):
                 textList.append(a.text)
                 linkList.append(a.get_attribute('href'))
                 ListCount -= 1
             if (ListCount == 0):
                 break
         scrapper.clickElement(nextButtonElement)
-    
+    logger.infoLog("10 "+ subText+ " in search results found")
+
     for i in range(10):
         scrapper.openBrowser(linkList[i])
         scrapper.waitForNSeconds(5)
@@ -56,7 +58,7 @@ def main():
         descElement = scrapper.findElementByID("renewedProgramDescriptionAtf")
         descList.append(descElement.text)
         iPhoneList.append([textList[i],priceList[i],descList[i],linkList[i]])
-    
+    logger.infoLog("List of Lists made with iPhone Data")
     scrapper.closeBrowser()
     
     excelPath = "Outputs/iPhones.xlsx"
@@ -68,7 +70,7 @@ def main():
     excelControl.inputData(excelPath, iPhoneList)
     
     # Uncomment to send an email with attachment
-    # mailer.gmailSendEmailAttachment("What's Up","sadafshahid@iut-dhaka.edu","First Try",excelPath)
+    mailer.gmailSendEmailAttachment("The Requested Excel file is attached","sadafshahid@iut-dhaka.edu","iPhone Data",excelPath)
 
     # Uncomment to send an email
     # mailer.gmailSendMail("msg","to","subject")
