@@ -16,7 +16,7 @@ SCOPES = ['https://mail.google.com/','https://www.googleapis.com/auth/gmail.modi
 
 
 class Email():
-    def gmailSendMail(self,msg,to,subject):
+    def gmailSendMail(self,msg,to,cc,subject):
     
         load_dotenv()
         logger = Logger()
@@ -48,6 +48,7 @@ class Email():
             message.set_content(msg)
 
             message['To'] = to
+            message['Cc'] = cc
             message['From'] = os.getenv('FROM')
             message['Subject'] = subject
 
@@ -66,7 +67,7 @@ class Email():
             send_email = None
         return send_email
     
-    def gmailSendEmailAttachment(self,msg,to,subject,attachment):
+    def gmailSendEmailAttachment(self,msg,to,cc,subject,attachment):
     
         load_dotenv()
         logger = Logger()
@@ -98,6 +99,7 @@ class Email():
             message.set_content(msg)
 
             message['To'] = to
+            message['Cc'] = cc
             message['From'] = os.getenv('FROM')
             message['Subject'] = subject
 
@@ -126,6 +128,6 @@ if __name__ == "__main__":
 
     mailer = Email()
     
-    mailer.gmailSendEmailAttachment("The Requested Excel file is attached","sadafshahid@iut-dhaka.edu","iPhone Data","Outputs/iPhones.xlsx")
+    mailer.gmailSendEmailAttachment("The Requested Excel file is attached","sadafshahid@iut-dhaka.edu","blackcat.sadaf@gmail.com","iPhone Data","Outputs/iPhones.xlsx")
 
     # mailer.gmailSendMail("What's Up","sadafshahid@iut-dhaka.edu","First Try")
