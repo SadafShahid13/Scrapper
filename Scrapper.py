@@ -26,7 +26,7 @@ class Scrapper:
             Scrapper.logger.infoLog("Element Found")
             return element
         except:
-            Scrapper.logger.errorLog("Element Not Found. Closing Browser")
+            Scrapper.logger.errorLog("Element Not Found. Closing Browser and App")
             Scrapper.closeBrowser()
             exit()
     
@@ -36,7 +36,7 @@ class Scrapper:
             Scrapper.logger.infoLog("Elements Found")
             return element
         except:
-            Scrapper.logger.errorLog("Elements Not Found. Closing Browser")
+            Scrapper.logger.errorLog("Elements Not Found. Closing Browser and App")
             Scrapper.closeBrowser()
             exit()
         
@@ -47,7 +47,7 @@ class Scrapper:
             Scrapper.logger.infoLog("Element Found")
             return element
         except:
-            Scrapper.logger.errorLog("Element Not Found. Closing Browser")
+            Scrapper.logger.errorLog("Element Not Found. Closing Browser and App")
             Scrapper.closeBrowser()
             exit()
 
@@ -57,7 +57,7 @@ class Scrapper:
             Scrapper.logger.infoLog("Element Found")
             return element
         except:
-            Scrapper.logger.errorLog("Element Not Found. Closing Browser")
+            Scrapper.logger.errorLog("Element Not Found. Closing Browser and App")
             Scrapper.closeBrowser()
             exit()
 
@@ -66,7 +66,7 @@ class Scrapper:
             element.send_keys(text)
             Scrapper.logger.infoLog("Text entered into element")
         except:
-            Scrapper.logger.errorLog("Text Could not be typed into element")
+            Scrapper.logger.errorLog("Text Could not be typed into element. Closing Browser and App")
             Scrapper.closeBrowser()
             exit()
     
@@ -75,7 +75,7 @@ class Scrapper:
             element.click()
             Scrapper.logger.infoLog("Element Clicked Upon")
         except:
-            Scrapper.logger.errorLog("Could not click element")
+            Scrapper.logger.errorLog("Could not click element. Closing Browser and App")
             Scrapper.closeBrowser()
             exit()
 
