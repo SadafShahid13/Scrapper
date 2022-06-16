@@ -13,7 +13,7 @@ def main():
     excelControl = ExcelController()
 
     # Uncomment the next line to receive SMS at App Start
-    # sms.sendSMS("App Started")
+    sms.sendSMS("App Started")
 
     amazonText = "https://www.amazon.com"
     scrapper.openBrowser(amazonText)
@@ -70,13 +70,13 @@ def main():
     excelControl.inputData(excelPath, iPhoneList)
     
     # Uncomment to send an email with attachment
-    mailer.gmailSendEmailAttachment("The Requested Excel file is attached","sadafshahid@iut-dhaka.edu","iPhone Data",excelPath)
+    mailer.gmailSendEmailAttachment("The Requested Excel file is attached","zahidhossain3742@gmail.com","iPhone Data",excelPath)
 
     # Uncomment to send an email
     # mailer.gmailSendMail("msg","to","subject")
 
     # Uncomment the next line to receive SMS at App End
-    # sms.sendSMS("App Ended")
+    sms.sendSMS("App Ended")
 
 if __name__ == "__main__":
     main()

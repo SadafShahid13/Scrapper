@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from Logger import Logger
 
 class SMS:
-    def sendSMS(msg):
+    def sendSMS(self, msg):
 
         load_dotenv()
         logger = Logger()
