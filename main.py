@@ -48,7 +48,7 @@ def main():
             if (ListCount == 0):
                 break
         scrapper.clickElement(nextButtonElement)
-    logger.infoLog("10 "+ subText+ " in search results found")
+    logger.infoLog("10 "+ subText+ "s in search result found")
 
     for i in range(10):
         scrapper.openBrowser(linkList[i])
