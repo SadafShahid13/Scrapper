@@ -21,32 +21,63 @@ class Scrapper:
         Scrapper.logger.infoLog('Opened Browser at ' + linkText)
     
     def findElementByXpath(self, xpath):
-        element = Scrapper.driver.find_element(By.XPATH, xpath)
-        Scrapper.logger.infoLog("Element Found")
-        return element
+        try:
+            element = Scrapper.driver.find_element(By.XPATH, xpath)
+            Scrapper.logger.infoLog("Element Found")
+            return element
+        except:
+            Scrapper.logger.errorLog("Element Not Found. Closing Browser")
+            Scrapper.closeBrowser()
+            exit()
     
     def findElementsByCSS_Selector(self, css_selector):
-        element = Scrapper.driver.find_elements(By.CSS_SELECTOR, css_selector)
-        Scrapper.logger.infoLog("Elements Found")
-        return element
-    
+        try:
+            element = Scrapper.driver.find_elements(By.CSS_SELECTOR, css_selector)
+            Scrapper.logger.infoLog("Elements Found")
+            return element
+        except:
+            Scrapper.logger.errorLog("Elements Not Found. Closing Browser")
+            Scrapper.closeBrowser()
+            exit()
+        
+
     def findElementByCSS_Selector(self, css_selector):
-        element = Scrapper.driver.find_element(By.CSS_SELECTOR, css_selector)
-        Scrapper.logger.infoLog("Element Found")
-        return element
-    
+        try:
+            element = Scrapper.driver.find_element(By.CSS_SELECTOR, css_selector)
+            Scrapper.logger.infoLog("Element Found")
+            return element
+        except:
+            Scrapper.logger.errorLog("Element Not Found. Closing Browser")
+            Scrapper.closeBrowser()
+            exit()
+
     def findElementByID(self,id):
-        element = Scrapper.driver.find_element(By.ID, id)
-        Scrapper.logger.infoLog("Element Found")
-        return element
-    
+        try:
+            element = Scrapper.driver.find_element(By.ID, id)
+            Scrapper.logger.infoLog("Element Found")
+            return element
+        except:
+            Scrapper.logger.errorLog("Element Not Found. Closing Browser")
+            Scrapper.closeBrowser()
+            exit()
+
     def typeTextIntoElement(self, element, text):
-        element.send_keys(text)
-        Scrapper.logger.infoLog("Text entered into element")
+        try:
+            element.send_keys(text)
+            Scrapper.logger.infoLog("Text entered into element")
+        except:
+            Scrapper.logger.errorLog("Text Could not be typed into element")
+            Scrapper.closeBrowser()
+            exit()
     
     def clickElement(self, element):
-        element.click()
-        Scrapper.logger.infoLog("Element Clicked Upon")
+        try:
+            element.click()
+            Scrapper.logger.infoLog("Element Clicked Upon")
+        except:
+            Scrapper.logger.errorLog("Could not click element")
+            Scrapper.closeBrowser()
+            exit()
 
     def waitForElement(self,element):
         WebDriverWait(Scrapper.driver,5).until(EC.visibility_of(element))
